@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{32FDD277-D42C-4B35-A6F8-CF573C1FAF29}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="README.md">
+  <MonoDevelop.Ide.Workbench ActiveDocument="script/auto.sh">
     <Files>
-      <File FileName="srcfile/test_src_file.log" Line="11" Column="36" IsPinned="True" />
-      <File FileName="utils/ReadSrcFileUtils.cs" IsPinned="True" />
+      <File FileName="srcfile/test_src_file.log" Line="11" Column="16" IsPinned="True" />
+      <File FileName="utils/ReadSrcFileUtils.cs" Line="24" Column="14" IsPinned="True" />
       <File FileName="utils/HttpClientUtils.cs" />
       <File FileName="utils/RegexUtils.cs" />
       <File FileName="utils/JsonParseUtils.cs" />
@@ -14,7 +14,8 @@
       <File FileName="config/config.yaml" />
       <File FileName="Program.cs" Line="1" Column="14" />
       <File FileName="controller/TrafficWizardCtr.cs" />
-      <File FileName="README.md" Line="6" Column="1" />
+      <File FileName="README.md" Line="6" Column="6" />
+      <File FileName="script/auto.sh" Line="3" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,12 +26,9 @@
                 <Node name="FrameworkReferences" expanded="True" />
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="config" expanded="True" />
-              <Node name="controller" expanded="True" />
-              <Node name="model" expanded="True" />
-              <Node name="srcfile" expanded="True" />
-              <Node name="utils" expanded="True" />
-              <Node name="README.md" selected="True" />
+              <Node name="script" expanded="True">
+                <Node name="auto.sh" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
