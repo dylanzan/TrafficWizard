@@ -1,0 +1,15 @@
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/bin/Debug/net5.0/CSharpScript.deps.json
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/bin/Debug/net5.0/CSharpScript.runtimeconfig.json
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/bin/Debug/net5.0/CSharpScript.runtimeconfig.dev.json
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/bin/Debug/net5.0/CSharpScript.dll
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/bin/Debug/net5.0/ref/CSharpScript.dll
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/bin/Debug/net5.0/CSharpScript.pdb
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/CSharpScript.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/CSharpScript.AssemblyInfoInputs.cache
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/CSharpScript.AssemblyInfo.cs
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/CSharpScript.csproj.CoreCompileInputs.cache
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/CSharpScript.dll
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/ref/CSharpScript.dll
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/CSharpScript.pdb
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/CSharpScript.genruntimeconfig.cache
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/CSharpScript.csprojAssemblyReference.cache

@@ -1,0 +1,47 @@
+﻿<Properties StartupConfiguration="{32FDD277-D42C-4B35-A6F8-CF573C1FAF29}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="model/ConfigModel.cs">
+    <Files>
+      <File FileName="srcfile/test_src_file.log" Line="3" Column="17" IsPinned="True" />
+      <File FileName="config/config.yaml" Line="2" Column="14" />
+      <File FileName="utils/ReadSrcFileUtils.cs" Line="28" Column="18" />
+      <File FileName="utils/HttpClientUtils.cs" Line="99" Column="1" />
+      <File FileName="utils/RegexUtils.cs" Line="2" Column="26" />
+      <File FileName="utils/JsonParseUtils.cs" Line="24" Column="14" />
+      <File FileName="model/LoggerModel.cs" Line="5" Column="2" />
+      <File FileName="model/IpInfoModel.cs" Line="10" Column="10" />
+      <File FileName="model/ConstModel.cs" Line="22" Column="1" />
+      <File FileName="utils/ConfigUtils.cs" Line="26" Column="2" />
+      <File FileName="model/ConfigModel.cs" Line="9" Column="36" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CSharpScript" expanded="True">
+            <Node name="CSharpScript" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="config" expanded="True" />
+              <Node name="model" expanded="True">
+                <Node name="ConfigModel.cs" selected="True" />
+              </Node>
+              <Node name="srcfile" expanded="True" />
+              <Node name="utils" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.CSharpScript PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

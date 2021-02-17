@@ -1,0 +1,5 @@
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/TrafficWizard.csprojAssemblyReference.cache
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/TrafficWizard.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/TrafficWizard.AssemblyInfoInputs.cache
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/TrafficWizard.AssemblyInfo.cs
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/TrafficWizard.csproj.CoreCompileInputs.cache
