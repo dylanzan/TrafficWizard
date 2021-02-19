@@ -23,14 +23,32 @@ namespace TrafficWizard.controller
         public TrafficWizardCtr()
         {
             config = ConfigHelpers.GetConfigHelper().GetConfig(ConstModel.CONFIG_FILE_PATH);
+            
             rSFU = new ReadSrcFileUtils(srcFileContentQ, reportContentQ);
         }
 
         public void Run()
         {
+            bool loop = true; //标志位
+
             this.doReadToQueue();
 
-            this.doContentToReport();
+            ThreadPool.SetMaxThreads(10, 10);
+
+            while (true)
+            {
+                if(srcFileContentQ.Count > 0)
+                {
+                    ThreadPool.QueueUserWorkItem(this.doContentToReport);
+                    loop = false;
+                }
+                else if (srcFileContentQ.Count == 0 && !loop)
+                {
+                    break;
+                }
+
+            }
+
         }
 
         private async Task doReadToQueue()
@@ -42,21 +60,18 @@ namespace TrafficWizard.controller
 
             await Task.Run(() =>
                 {
-                    rSFU.ReadSrcFile(this.config.SrcFilePath);
+                    rSFU.ReadSrcFile(this.config.srcFilePath);
                 });
         }
 
-        private async Task doContentToReport()
+        private void doContentToReport(object o)
         {
             if (this.config == null)
             {
                 return;
             }
 
-            await Task.Run(() =>
-                {
-                    rSFU.logLineHandler();
-                });
+            rSFU.logLineHandler();
         }
 
     }

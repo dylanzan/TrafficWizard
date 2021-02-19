@@ -7,8 +7,8 @@ namespace TrafficWizard
         static void Main(string[] args)
         {
             TrafficWizardCtr tw = new TrafficWizardCtr();
+            Console.WriteLine("Debug:1");
             tw.Run();
-
         }
     }
 }

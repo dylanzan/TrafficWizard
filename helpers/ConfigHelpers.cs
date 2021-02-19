@@ -2,7 +2,8 @@
 using YamlDotNet;
 using YamlDotNet.Serialization;
 using TrafficWizard.model;
-
+using System.IO;
+using YamlDotNet.Serialization.NamingConventions;
 
 namespace TrafficWizard.helpers
 {
@@ -25,14 +26,19 @@ namespace TrafficWizard.helpers
         public ConfigModel GetConfig(string configPath)
         {
 
-            Deserializer configDes = null; 
+            Deserializer confsigDes = null; 
 
             ConfigModel config = null; 
 
             try
             {
-                configDes = new Deserializer();
-                config = configDes.Deserialize<ConfigModel>(configPath);
+                using(var input = File.OpenText(configPath))
+                {
+                    var deserializerBuilder = new DeserializerBuilder().WithNamingConvention(new CamelCaseNamingConvention());
+                    var deserializer = deserializerBuilder.Build();
+                    config = deserializer.Deserialize<ConfigModel>(input);
+                }
+
                 return config;
             }catch(Exception e)
             {

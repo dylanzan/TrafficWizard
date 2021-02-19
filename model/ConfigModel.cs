@@ -5,22 +5,18 @@ namespace TrafficWizard.model
 {
     public class ConfigModel
     {
-        [YamlMember(Alias = "SrcFilePath")]
-        private string srcFilePath;
+        [YamlMember(Alias = "SrcFilePath",ApplyNamingConventions = false)]
+        public string srcFilePath { set; get; }
 
-        [YamlMember(Alias = "TagetFilePath")]
-        private string tagetFilePath;
+        [YamlMember(Alias = "TagetFilePath", ApplyNamingConventions = false)]
+        public string tagetFilePath { set; get; }
 
-        [YamlMember(Alias = "Token")]
-        private string token;
+        [YamlMember(Alias = "Token", ApplyNamingConventions = false)]
+        public string token { set; get; }
 
         public ConfigModel()
         {
         }
-
-        public string SrcFilePath { get => srcFilePath; set => srcFilePath = value; }
-        public string TagetFilePath { get => tagetFilePath; set => tagetFilePath = value; }
-        public string Token { get => token; set => token = value; }
 
         public override bool Equals(object obj)
         {

@@ -2,6 +2,7 @@
 using System.Collections;
 using TrafficWizard.model;
 using System.IO;
+using System.Text;
 
 namespace TrafficWizard.utils
 {
@@ -46,28 +47,29 @@ namespace TrafficWizard.utils
             }
             string line = "";
 
-            StreamReader file = null;
+            StreamReader sr=null;
             
-
             try
             {
-                file=new StreamReader(srcFilepath);
+                sr=new StreamReader(srcFilepath, Encoding.Default);
 
-                while ((line = file.ReadLine())
+                while ((line = sr.ReadLine())
                     != null)
                 {
                     srcFileQueue.Enqueue(line);
+                    Console.WriteLine(" srcfile's content is : "+line);
                 }
 
             }
             catch(Exception e)
             {
-                srcFileQueue.Clear();
-                return e.ToString();
+                throw;
+                //srcFileQueue.Clear();
+                //return e.ToString();
             }
             finally
             {
-                file.Close();
+                sr.Close();
             }
             return "";
         }
