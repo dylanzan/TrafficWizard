@@ -4,9 +4,9 @@ using YamlDotNet.Serialization;
 using TrafficWizard.model;
 
 
-namespace TrafficWizard.utils
+namespace TrafficWizard.helpers
 {
-    public class ConfigUtils
+    public class ConfigHelpers
     { 
 
         public static ConfigModel GetConfig(string configPath)
