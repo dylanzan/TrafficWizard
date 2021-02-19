@@ -8,23 +8,23 @@ namespace TrafficWizard.utils
     public class ReadSrcFileUtils
     {
         //正确请求tag
-        const string ACCEPTED_TAG = "accepted";
+        private const string ACCEPTED_TAG = "accepted";
 
         //条文参数索引
-        const int LOG_DATE_YMD_INDEX = 0;
-        const int LOG_DATE_HMS_INDEX = 1;
-        const int LOG_IP_ADDRESS_INDEX = 2;
-        const int LOG_LINK_URL_INDEX = 4;
+        private const int LOG_DATE_YMD_INDEX = 0;
+        private const int LOG_DATE_HMS_INDEX = 1;
+        private const int LOG_IP_ADDRESS_INDEX = 2;
+        private const int LOG_LINK_URL_INDEX = 4;
 
         //IP 地址索引
-        const int IP_PROTOCOL_INDEX = 0;
-        const int IP_ADDR_INDEX = 1;
-        const int IP_PORT_INDEX = 2;
+        private const int IP_PROTOCOL_INDEX = 0;
+        private const int IP_ADDR_INDEX = 1;
+        private const int IP_PORT_INDEX = 2;
 
         //URL 地址索引
-        const int URL_PROTOCOL_INDEX = 0;
-        const int URL_LINK_URL_INDEX = 1;
-        const int URL_PORT_INDEX = 2;
+        private const int URL_PROTOCOL_INDEX = 0;
+        private const int URL_LINK_URL_INDEX = 1;
+        private const int URL_PORT_INDEX = 2;
 
         private Queue srcFileQueue; //日志待处理队列
         private Queue reportQueue; //落盘对队列
@@ -99,6 +99,9 @@ namespace TrafficWizard.utils
 
             string[] urls = lines[LOG_LINK_URL_INDEX].Split(":");
             string urlStr = urls[URL_LINK_URL_INDEX];
+
+            //dylan:DEBUG
+            Console.WriteLine(string.Format(@"{0},{1},{2},{3}", dateStr, ipAddrStr, ipZoneStr, urlStr));
 
             this.reportQueue.Enqueue(string.Format(@"{0},{1},{2},{3}",dateStr,ipAddrStr,ipZoneStr, urlStr));
         }

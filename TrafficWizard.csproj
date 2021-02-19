@@ -9,6 +9,7 @@
     <Folder Include="controller\" />
     <Folder Include="utils\" />
     <Folder Include="script\" />
+    <Folder Include="helpers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="YamlDotNet" Version="9.1.4" />

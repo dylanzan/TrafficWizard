@@ -3,6 +3,9 @@ namespace TrafficWizard.model
 {
     public class ConstModel
     {
+        //配置文件相对路径
+        public const string CONFIG_FILE_PATH = "TrafficWizard/config/config.yaml";
+
         public const string VOID_PARAMS = "Please check if the parameter format you entered is correct.";
         public const string VOID_PORT_NUM = "Incorrect port number format";
 

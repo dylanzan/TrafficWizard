@@ -7,23 +7,38 @@ using TrafficWizard.model;
 namespace TrafficWizard.helpers
 {
     public class ConfigHelpers
-    { 
+    {
 
-        public static ConfigModel GetConfig(string configPath)
+        private static ConfigHelpers ch;
+
+        private ConfigHelpers() { }
+
+        public static ConfigHelpers GetConfigHelper()
         {
-            Deserializer condigDes = null; 
+            if (ch == null)
+            {
+                ch = new ConfigHelpers();
+            }
+            return ch;
+        }
+
+        public ConfigModel GetConfig(string configPath)
+        {
+
+            Deserializer configDes = null; 
 
             ConfigModel config = null; 
 
             try
             {
-                condigDes = new Deserializer();
-                config = condigDes.Deserialize<ConfigModel>(configPath);
+                configDes = new Deserializer();
+                config = configDes.Deserialize<ConfigModel>(configPath);
                 return config;
             }catch(Exception e)
             {
-                Console.WriteLine("parse config got an err :",e);
-                return null;
+                throw;
+                //Console.WriteLine("parse config got an err :",e);
+                //return null;
             }
         } 
 

@@ -17,7 +17,7 @@ namespace TrafficWizard.utils
             TOKEN_KEY = tOKEN_KEY;
         }
 
-        private string GetAsync(string httpUrl)
+        private string HttpGetAsync(string httpUrl)
         {
             HttpClient hc = null;
 
@@ -56,10 +56,10 @@ namespace TrafficWizard.utils
                     if (reu.IPCheck(ipAddress))
                     {
                         jsu = new JsonParseUtils();
-                        string ipv4JsonResponse = this.GetAsync(IPV4_REQUEST_URL + ipAddress);
+                        string ipv4JsonResponse = this.HttpGetAsync(IPV4_REQUEST_URL + ipAddress);
                         if (String.IsNullOrEmpty(ipv4JsonResponse)) //server端问题，有时需要请求两次，才能成功
                         {
-                            ipv4JsonResponse = this.GetAsync(IPV4_REQUEST_URL + ipAddress);
+                            ipv4JsonResponse = this.HttpGetAsync(IPV4_REQUEST_URL + ipAddress);
                             ipZone = jsu.JsonParse(ipv4JsonResponse);
                             break;
                         }
@@ -68,7 +68,7 @@ namespace TrafficWizard.utils
                     break;
                 case ConstModel.IPV6:
                     jsu = new JsonParseUtils();
-                    ipZone = this.GetAsync(IPV6_REQUEST_URL + ipAddress);
+                    ipZone = this.HttpGetAsync(IPV6_REQUEST_URL + ipAddress);
                     break;
                 case ConstModel.NOTHING:
                     break;
@@ -85,14 +85,14 @@ namespace TrafficWizard.utils
             string localIpZone = "";
             try
             {
-                localIpZone = this.GetAsync(IPV4_REQUEST_URL);
+                localIpZone = this.HttpGetAsync(IPV4_REQUEST_URL);
                 if (!String.IsNullOrEmpty(localIpZone))
                 {
                     return localIpZone;
                 }
                 else //server端问题，有时需要请求两次，才能获取结果，出现此现象概率很低
                 {
-                    localIpZone = this.GetAsync(IPV4_REQUEST_URL);
+                    localIpZone = this.HttpGetAsync(IPV4_REQUEST_URL);
                     return localIpZone;
                 }
             }
