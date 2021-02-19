@@ -6,9 +6,10 @@ namespace TrafficWizard
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("\n ----- rundate: {0} ----- \n", DateTime.Now.ToString());
+
             TrafficWizardCtr tw = new TrafficWizardCtr();
-            Console.WriteLine("Debug:1");
             tw.Run();
         }
-    }
+    } 
 }

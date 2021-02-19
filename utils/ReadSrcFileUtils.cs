@@ -8,8 +8,10 @@ namespace TrafficWizard.utils
 {
     public class ReadSrcFileUtils
     {
+        HttpClientUtils hc = null;
         //正确请求tag
         private const string ACCEPTED_TAG = "accepted";
+        private const string TCP_TAG = "tcp";
 
         //条文参数索引
         private const int LOG_DATE_YMD_INDEX = 0;
@@ -76,37 +78,56 @@ namespace TrafficWizard.utils
 
         //处理日志字符串,异步多线程处理
         //最终格式： ${date},${ipaddress},${ip} ${zone},${link url}\n
-        public void logLineHandler()
+        public void logLineHandler(HttpClientUtils hc)
         {
-            if (this.srcFileQueue == null)
+            if (this.srcFileQueue == null || hc==null)
             {
                 return;
             }
 
-            //2021/02/17 11:09:39 tcp:116.230.177.246:0 accepted tcp:phd.aws.amazon.com:443
-            string line =(string)this.srcFileQueue.Dequeue();
+            try
+            {
+                //2021/02/17 11:09:39 tcp:116.230.177.246:0 accepted tcp:phd.aws.amazon.com:443
+                string line = (string)this.srcFileQueue.Dequeue();
 
-            if (!line.Contains(ACCEPTED_TAG)) { //期待处理的内容
-                return;
+                if (!line.Contains(ACCEPTED_TAG))
+                { //期待处理的内容
+                    return;
+                }
+
+                string[] lines = line.Split(" ");
+                string dateStr = string.Format(@"{0} {1}", lines[LOG_DATE_YMD_INDEX], line[LOG_DATE_HMS_INDEX]);
+
+                string[] ipaddrs = lines[LOG_IP_ADDRESS_INDEX].Split(":");
+                string ipAddrStr = "";
+
+                if (lines[LOG_IP_ADDRESS_INDEX].Contains(TCP_TAG))
+                {
+                    ipAddrStr = ipaddrs[IP_ADDR_INDEX];
+                }
+                else
+                {
+                    ipAddrStr = ipaddrs[0];
+                }
+
+                //TODO：此处会对ip地址进行查询,http调用处暂未调试，暂不实现
+                string ipZoneStr = hc.InquireIpInfo(ipAddrStr);
+
+                string[] urls = lines[LOG_LINK_URL_INDEX].Split(":");
+                string urlStr = urls[URL_LINK_URL_INDEX];
+
+
+                //dylan:DEBUG
+                Console.WriteLine(string.Format(@"{0},{1},{2},{3}", dateStr, ipAddrStr, ipZoneStr, urlStr));
+
+                this.reportQueue.Enqueue(string.Format(@"{0},{1},{2},{3}", dateStr, ipAddrStr, ipZoneStr, urlStr));
+            }
+            catch (Exception e)
+            {
+                throw;
             }
 
-            string[] lines = line.Split(" ");
-            string dateStr = string.Format(@"{0} {1}", lines[LOG_DATE_YMD_INDEX], line[LOG_DATE_HMS_INDEX]);
-
-            string[] ipaddrs = lines[LOG_IP_ADDRESS_INDEX].Split(":");
-            string ipAddrStr = ipaddrs[IP_ADDR_INDEX];
-
-            //TODO：此处会对ip地址进行查询,http调用处暂未调试，暂不实现
-            string ipZoneStr = "";
-
-            string[] urls = lines[LOG_LINK_URL_INDEX].Split(":");
-            string urlStr = urls[URL_LINK_URL_INDEX];
-
-            //dylan:DEBUG
-            Console.WriteLine(string.Format(@"{0},{1},{2},{3}", dateStr, ipAddrStr, ipZoneStr, urlStr));
-
-            this.reportQueue.Enqueue(string.Format(@"{0},{1},{2},{3}",dateStr,ipAddrStr,ipZoneStr, urlStr));
-        }
+           }
 
     
     }

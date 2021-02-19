@@ -19,16 +19,20 @@ namespace TrafficWizard.controller
         static Queue reportContentQ = new Queue();
 
         ReadSrcFileUtils rSFU = null;
+        HttpClientUtils hc = null;
 
         public TrafficWizardCtr()
         {
             config = ConfigHelpers.GetConfigHelper().GetConfig(ConstModel.CONFIG_FILE_PATH);
             
             rSFU = new ReadSrcFileUtils(srcFileContentQ, reportContentQ);
+            hc = new HttpClientUtils(config.token);
         }
 
         public void Run()
         {
+
+
             bool loop = true; //标志位
 
             this.doReadToQueue();
@@ -39,7 +43,7 @@ namespace TrafficWizard.controller
             {
                 if(srcFileContentQ.Count > 0)
                 {
-                    ThreadPool.QueueUserWorkItem(this.doContentToReport);
+                    ThreadPool.QueueUserWorkItem(this.doContentToReport,hc);
                     loop = false;
                 }
                 else if (srcFileContentQ.Count == 0 && !loop)
@@ -71,7 +75,7 @@ namespace TrafficWizard.controller
                 return;
             }
 
-            rSFU.logLineHandler();
+            rSFU.logLineHandler((HttpClientUtils)o);
         }
 
     }

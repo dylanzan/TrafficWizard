@@ -8,7 +8,7 @@ namespace TrafficWizard.utils
     {
 
         private string TOKEN_KEY = "";
-        private const string IPV4_REQUEST_URL = "http://101.133.135.241/";
+        private const string IPV4_REQUEST_URL = "http://101.133.135.241:8081/";
         private const string IPV6_REQUEST_URL = "http://freeapi.ipip.net/";
         private const string USER_AGENT_VALUE = "Chrome";
 
