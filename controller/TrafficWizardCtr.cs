@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Threading;
-using TrafficWizard.utils;
+using System.Threading.Tasks;
 using TrafficWizard.helpers;
 using TrafficWizard.model;
-using System.Threading.Tasks;
+using TrafficWizard.utils;
 
 namespace TrafficWizard.controller
 {
@@ -37,13 +36,17 @@ namespace TrafficWizard.controller
 
             this.doReadToQueue();
 
-            ThreadPool.SetMaxThreads(10, 10);
+            //ThreadPool.SetMaxThreads(10, 10);
 
-            while (true)
+            //DEBUG:
+            //this.doContentToReport(null);
+
+           while (true)
             {
                 if(srcFileContentQ.Count > 0)
                 {
-                    ThreadPool.QueueUserWorkItem(this.doContentToReport,hc);
+                    //ThreadPool.QueueUserWorkItem(this.doContentToReport,config.token);
+                    this.doContentToReport();
                     loop = false;
                 }
                 else if (srcFileContentQ.Count == 0 && !loop)
@@ -68,14 +71,17 @@ namespace TrafficWizard.controller
                 });
         }
 
-        private void doContentToReport(object o)
+        private void doContentToReport()
         {
             if (this.config == null)
             {
                 return;
             }
 
-            rSFU.logLineHandler((HttpClientUtils)o);
+            //await Task.Run(() =>
+            //{
+                rSFU.logLineHandler(config.token);
+            //});        
         }
 
     }

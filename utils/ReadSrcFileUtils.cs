@@ -8,7 +8,6 @@ namespace TrafficWizard.utils
 {
     public class ReadSrcFileUtils
     {
-        HttpClientUtils hc = null;
         //正确请求tag
         private const string ACCEPTED_TAG = "accepted";
         private const string TCP_TAG = "tcp";
@@ -78,15 +77,18 @@ namespace TrafficWizard.utils
 
         //处理日志字符串,异步多线程处理
         //最终格式： ${date},${ipaddress},${ip} ${zone},${link url}\n
-        public void logLineHandler(HttpClientUtils hc)
+        public void logLineHandler(string token)
         {
-            if (this.srcFileQueue == null || hc==null)
+            if (this.srcFileQueue == null)
             {
                 return;
             }
 
+            HttpClientUtils hc = null;
+
             try
             {
+                hc = new HttpClientUtils(token);
                 //2021/02/17 11:09:39 tcp:116.230.177.246:0 accepted tcp:phd.aws.amazon.com:443
                 string line = (string)this.srcFileQueue.Dequeue();
 
@@ -110,8 +112,9 @@ namespace TrafficWizard.utils
                     ipAddrStr = ipaddrs[0];
                 }
 
+                string ipZoneStr = "";
                 //TODO：此处会对ip地址进行查询,http调用处暂未调试，暂不实现
-                string ipZoneStr = hc.InquireIpInfo(ipAddrStr);
+                ipZoneStr = hc.InquireIpInfo(ipAddrStr);
 
                 string[] urls = lines[LOG_LINK_URL_INDEX].Split(":");
                 string urlStr = urls[URL_LINK_URL_INDEX];
