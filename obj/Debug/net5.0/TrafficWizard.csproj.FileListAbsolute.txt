@@ -3,6 +3,7 @@
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/TrafficWizard.AssemblyInfoInputs.cache
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/TrafficWizard.AssemblyInfo.cs
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/CSharpScript/obj/Debug/net5.0/TrafficWizard.csproj.CoreCompileInputs.cache
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/bin/Debug/net5.0/srcfile/test_src_file.log
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/bin/Debug/net5.0/TrafficWizard.deps.json
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/bin/Debug/net5.0/TrafficWizard.runtimeconfig.json
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/bin/Debug/net5.0/TrafficWizard.runtimeconfig.dev.json
@@ -11,7 +12,6 @@
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/bin/Debug/net5.0/TrafficWizard.pdb
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/bin/Debug/net5.0/Newtonsoft.Json.dll
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/bin/Debug/net5.0/YamlDotNet.dll
-/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/Debug/net5.0/TrafficWizard.csprojAssemblyReference.cache
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/Debug/net5.0/TrafficWizard.GeneratedMSBuildEditorConfig.editorconfig
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/Debug/net5.0/TrafficWizard.AssemblyInfoInputs.cache
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/Debug/net5.0/TrafficWizard.AssemblyInfo.cs
@@ -21,4 +21,3 @@
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/Debug/net5.0/ref/TrafficWizard.dll
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/Debug/net5.0/TrafficWizard.pdb
 /Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/Debug/net5.0/TrafficWizard.genruntimeconfig.cache
-/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/bin/Debug/net5.0/srcfile/test_src_file.log
