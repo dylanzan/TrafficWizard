@@ -12,6 +12,8 @@ namespace TrafficWizard.utils
         private const string ACCEPTED_TAG = "accepted";
         private const string TCP_TAG = "tcp";
 
+        private const string REPORT_SUFFIX = ".csv";
+
         //条文参数索引
         private const int LOG_DATE_YMD_INDEX = 0;
         private const int LOG_DATE_HMS_INDEX = 1;
@@ -31,15 +33,21 @@ namespace TrafficWizard.utils
         private Queue srcFileQueue; //日志待处理队列
         private Queue reportQueue; //落盘对队列
 
-        public ReadSrcFileUtils(Queue srcFileQueue,Queue reportQueue)
+        private string srcFilePath;
+        private string reportTagetFilePath;
+
+        public ReadSrcFileUtils(Queue srcFileQueue,Queue reportQueue,string srcFilePath, string reportTagetFilePath)
         {
             this.srcFileQueue = srcFileQueue;
             this.reportQueue = reportQueue;
+
+            this.srcFilePath = srcFilePath;
+            this.reportTagetFilePath = reportTagetFilePath;
         }
 
 
         //读取源文件，符合正常请求，则入队；失败则清空队，并反回异常
-        public string ReadSrcFile(string srcFilepath)
+        public string ReadSrcFile()
         {
 
             if (this.srcFileQueue == null)
@@ -52,7 +60,7 @@ namespace TrafficWizard.utils
             
             try
             {
-                sr=new StreamReader(srcFilepath, Encoding.Default);
+                sr=new StreamReader(this.srcFilePath, Encoding.Default);
 
                 while ((line = sr.ReadLine())
                     != null)
@@ -131,6 +139,46 @@ namespace TrafficWizard.utils
             }
 
            }
+
+        public void reportToCSV()
+        {
+
+            if (this.reportQueue == null)
+            {
+                return;
+            }
+
+            bool loop = true;
+
+            string fielNamePrefix = DateTime.Now.ToString("yyyyMMdd");
+
+            try
+            {
+                string reportFileName=string.Format("{0}{1}{2}", this.reportTagetFilePath,fielNamePrefix,REPORT_SUFFIX);
+                using (StreamWriter sw = new StreamWriter(reportFileName, true))
+                {
+
+                    while (true)
+                    {
+                        if (this.reportQueue.Count > 0)
+                        {
+                            string line = (string)this.reportQueue.Dequeue();
+                            sw.WriteLine(line);
+                            loop = false;
+                        }
+                        else if (reportQueue.Count == 0 && !loop)
+                        {
+                            break;
+                        }
+                    }
+
+                }
+            }
+            catch(Exception e)
+            {
+                throw;
+            }
+        }
 
     
     }

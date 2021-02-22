@@ -26,7 +26,6 @@ namespace TrafficWizard.helpers
         public ConfigModel GetConfig(string configPath)
         {
 
-            Deserializer confsigDes = null; 
 
             ConfigModel config = null; 
 

@@ -24,38 +24,25 @@ namespace TrafficWizard.controller
         {
             config = ConfigHelpers.GetConfigHelper().GetConfig(ConstModel.CONFIG_FILE_PATH);
             
-            rSFU = new ReadSrcFileUtils(srcFileContentQ, reportContentQ);
+            rSFU = new ReadSrcFileUtils(srcFileContentQ, reportContentQ,config.srcFilePath,config.tagetFilePath);
             hc = new HttpClientUtils(config.token);
         }
 
         public void Run()
         {
-
-
-            bool loop = true; //标志位
-
-            this.doReadToQueue();
-
-            //ThreadPool.SetMaxThreads(10, 10);
-
-            //DEBUG:
-            //this.doContentToReport(null);
-
-           while (true)
+            try
             {
-                if(srcFileContentQ.Count > 0)
-                {
-                    //ThreadPool.QueueUserWorkItem(this.doContentToReport,config.token);
-                    this.doContentToReport();
-                    loop = false;
-                }
-                else if (srcFileContentQ.Count == 0 && !loop)
-                {
-                    break;
-                }
+                this.doReadToQueue();
 
+                this.doContentToReport();
+
+                this.doReportToCSV();
             }
-
+            catch
+            {
+                throw;
+            }
+           
         }
 
         private async Task doReadToQueue()
@@ -67,7 +54,7 @@ namespace TrafficWizard.controller
 
             await Task.Run(() =>
                 {
-                    rSFU.ReadSrcFile(this.config.srcFilePath);
+                    rSFU.ReadSrcFile();
                 });
         }
 
@@ -78,10 +65,31 @@ namespace TrafficWizard.controller
                 return;
             }
 
-            //await Task.Run(() =>
-            //{
-                rSFU.logLineHandler(config.token);
-            //});        
+            bool loop = true; //标志位
+
+            while (true)
+            {
+                if (srcFileContentQ.Count > 0)
+                {
+                    rSFU.logLineHandler(config.token);
+                    loop = false;
+                }
+                else if (srcFileContentQ.Count == 0 && !loop)
+                {
+                    break;
+                }
+
+            }
+        }
+
+        private void doReportToCSV()
+        {
+            if (this.config == null)
+            {
+                return;
+            }
+
+            rSFU.reportToCSV();
         }
 
     }

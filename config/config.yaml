@@ -1,3 +1,3 @@
 Token: "10001 qwertyuiop123456asdfghjkl"
-SrcFilePath: "/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/srcfile/access.log"
-TagetFilePath: "tagetfiles/"
+SrcFilePath: "/Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/srcfile/access.log"
+TagetFilePath: "/Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/tagetfiles/"
