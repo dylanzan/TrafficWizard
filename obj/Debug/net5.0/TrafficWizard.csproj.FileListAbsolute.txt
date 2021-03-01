@@ -40,3 +40,4 @@
 /Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/obj/Debug/net5.0/ref/TrafficWizard.dll
 /Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/obj/Debug/net5.0/TrafficWizard.pdb
 /Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/obj/Debug/net5.0/TrafficWizard.genruntimeconfig.cache
+/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/Debug/net5.0/TrafficWizard.csprojAssemblyReference.cache

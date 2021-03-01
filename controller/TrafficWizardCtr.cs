@@ -32,11 +32,12 @@ namespace TrafficWizard.controller
         {
             try
             {
-                this.doReadToQueue();
+                        
+               var t1=this.doReadToQueue();
+               var t2= this.doContentToReport();              
+               var t3= this.doReportToCSV();
 
-                this.doContentToReport();
-
-                this.doReportToCSV();
+               Task.WaitAny(new Task[]{t1,t2,t3});
             }
             catch
             {
@@ -53,43 +54,42 @@ namespace TrafficWizard.controller
             }
 
             await Task.Run(() =>
-                {
-                    rSFU.ReadSrcFile();
-                });
+            {
+                rSFU.ReadSrcFile();
+            });
+            
+                
         }
 
-        private void doContentToReport()
+        private async Task doContentToReport()
         {
             if (this.config == null)
             {
                 return;
             }
 
-            bool loop = true; //标志位
-
-            while (true)
+           
+            await Task.Run(() =>
             {
-                if (srcFileContentQ.Count > 0)
-                {
-                    rSFU.logLineHandler(config.token);
-                    loop = false;
-                }
-                else if (srcFileContentQ.Count == 0 && !loop)
-                {
-                    break;
-                }
-
-            }
+               
+            rSFU.logLineHandler(config.token);
+                       
+            });
+           
         }
 
-        private void doReportToCSV()
+        private async Task doReportToCSV()
         {
             if (this.config == null)
             {
                 return;
             }
 
-            rSFU.reportToCSV();
+            await Task.Run(() =>
+            {
+                rSFU.reportToCSV();
+            });
+            
         }
 
     }

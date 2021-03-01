@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/IDQ3CuJxMdom1v6eiqwNJrGeT12kiSBiJFE95+SFh+wpDWpCiCeTjKtSZ6wyqObB8In0W6tT27N5/YwSRkGqw==",
+  "dgSpecHash": "8Z3/N+FDxucCxxDGNNcqXuM+xAb9YNqlRuSGpA9u7Eno/RRZfiK2QE/g3fRFE2K6D/w3PExT2+HMcfPZdZhhMQ==",
   "success": true,
-  "projectFilePath": "/Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/TrafficWizard.csproj",
+  "projectFilePath": "/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/TrafficWizard.csproj",
   "expectedPackageFiles": [
-    "/Users/dylan.zan/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
-    "/Users/dylan.zan/.nuget/packages/yamldotnet/9.1.4/yamldotnet.9.1.4.nupkg.sha512"
+    "/Users/dylan/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/Users/dylan/.nuget/packages/yamldotnet/9.1.4/yamldotnet.9.1.4.nupkg.sha512"
   ],
   "logs": []
 }
