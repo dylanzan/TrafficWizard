@@ -34,9 +34,11 @@ namespace TrafficWizard.controller
             {
                         
                var t1=this.doReadToQueue();
-               var t2= this.doContentToReport();              
-               var t3= this.doReportToCSV();
+               
+               var t2=this.doContentToReport();
 
+               var t3= this.doReportToCSV();
+                
                Task.WaitAny(new Task[]{t1,t2,t3});
             }
             catch
@@ -68,12 +70,22 @@ namespace TrafficWizard.controller
                 return;
             }
 
-           
             await Task.Run(() =>
             {
-               
-            rSFU.logLineHandler(config.token);
-                       
+                bool loop = true;
+
+                while (true)
+                {
+                    if (srcFileContentQ.Count > 0)
+                    {
+                        loop = false;
+                        rSFU.logLineHandler(config.token);
+                    }
+                    else if (srcFileContentQ.Count == 0 && !loop)
+                    {
+                        break;
+                    }
+                }
             });
            
         }

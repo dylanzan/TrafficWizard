@@ -67,7 +67,7 @@ namespace TrafficWizard.utils
                     != null)
                 {
                     srcFileQueue.Enqueue(line);
-                    //Console.WriteLine(" srcfile's content is : "+line);
+                    Console.WriteLine(" srcfile's content is : "+line);
                 }
 
             }
@@ -88,7 +88,6 @@ namespace TrafficWizard.utils
         //最终格式： ${date},${ipaddress},${ip} ${zone},${link url}\n
         public void logLineHandler(string token)
         {
-            Console.WriteLine("log line handler to check ipinfo:{0} ",this.srcFileQueue.Count);
 
             /*if (this.srcFileQueue == null && !loop)
             {
@@ -96,57 +95,48 @@ namespace TrafficWizard.utils
             }*/
 
             HttpClientUtils hc = null;
-            bool loop;
+            
             try
             {
+
+                Console.WriteLine("log line handler to check ipinfo:{0} ", this.srcFileQueue.Count);
 
                 hc = new HttpClientUtils(token);
                 //2021/02/17 11:09:39 tcp:116.230.177.246:0 accepted tcp:phd.aws.amazon.com:443
                 string line = (string)this.srcFileQueue.Dequeue();
-                loop = true;
-                while (true)
-                {
-                    if (this.srcFileQueue.Count > 0)
-                    {
-                        if (!line.Contains(ACCEPTED_TAG))
-                        { //期待处理的内容
-                            return;
-                        }
-
-                        string[] lines = line.Split(" ");
-                        string dateStr = string.Format(@"{0} {1}", lines[LOG_DATE_YMD_INDEX], line[LOG_DATE_HMS_INDEX]);
-
-                        string[] ipaddrs = lines[LOG_IP_ADDRESS_INDEX].Split(":");
-                        string ipAddrStr = "";
-
-                        if (lines[LOG_IP_ADDRESS_INDEX].Contains(TCP_TAG))
-                        {
-                            ipAddrStr = ipaddrs[IP_ADDR_INDEX];
-                        }
-                        else
-                        {
-                            ipAddrStr = ipaddrs[0];
-                        }
-
-                        string ipZoneStr = "";
-                        //TODO：此处会对ip地址进行查询,http调用处暂未调试，暂不实现
-                        ipZoneStr = hc.InquireIpInfo(ipAddrStr);
-
-                        string[] urls = lines[LOG_LINK_URL_INDEX].Split(":");
-                        string urlStr = urls[URL_LINK_URL_INDEX];
-
-
-                        //dylan:DEBUG
-                        Console.WriteLine(string.Format(@"{0},{1},{2},{3}", dateStr, ipAddrStr, ipZoneStr, urlStr));
-
-                        this.reportQueue.Enqueue(string.Format(@"{0},{1},{2},{3}", dateStr, ipAddrStr, ipZoneStr, urlStr));
-                        loop = false;
-                    }
-                    else if (this.srcFileQueue.Count == 0 && !loop)
-                    {
-                        break;
-                    }
+             
+                if (!line.Contains(ACCEPTED_TAG))
+                { //期待处理的内容
+                    return;
                 }
+
+                string[] lines = line.Split(" ");
+                string dateStr = string.Format(@"{0} {1}", lines[LOG_DATE_YMD_INDEX], line[LOG_DATE_HMS_INDEX]);
+
+                string[] ipaddrs = lines[LOG_IP_ADDRESS_INDEX].Split(":");
+                string ipAddrStr = "";
+
+                if (lines[LOG_IP_ADDRESS_INDEX].Contains(TCP_TAG))
+                {
+                    ipAddrStr = ipaddrs[IP_ADDR_INDEX];
+                }
+                else
+                {
+                    ipAddrStr = ipaddrs[0];
+                }
+
+                string ipZoneStr = "";
+                //TODO：此处会对ip地址进行查询,http调用处暂未调试，暂不实现
+                ipZoneStr = hc.InquireIpInfo(ipAddrStr);
+
+                string[] urls = lines[LOG_LINK_URL_INDEX].Split(":");
+                string urlStr = urls[URL_LINK_URL_INDEX];
+
+
+                //dylan:DEBUG
+                Console.WriteLine(string.Format(@"{0},{1},{2},{3}", dateStr, ipAddrStr, ipZoneStr, urlStr));
+
+                this.reportQueue.Enqueue(string.Format(@"{0},{1},{2},{3}", dateStr, ipAddrStr, ipZoneStr, urlStr));
             }
             catch (Exception e)
             {

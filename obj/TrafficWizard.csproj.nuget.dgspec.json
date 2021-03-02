@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/TrafficWizard.csproj": {}
+    "/Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/TrafficWizard.csproj": {}
   },
   "projects": {
-    "/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/TrafficWizard.csproj": {
+    "/Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/TrafficWizard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/TrafficWizard.csproj",
+        "projectUniqueName": "/Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/TrafficWizard.csproj",
         "projectName": "TrafficWizard",
-        "projectPath": "/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/TrafficWizard.csproj",
-        "packagesPath": "/Users/dylan/.nuget/packages/",
-        "outputPath": "/Users/dylan/Documents/github/vsproject/csharp_project/cs_script/TrafficWizard/obj/",
+        "projectPath": "/Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/TrafficWizard.csproj",
+        "packagesPath": "/Users/dylan.zan/.nuget/packages/",
+        "outputPath": "/Users/dylan.zan/Documents/github/vsproject/csharp_project/TrafficWizard/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/dylan/.config/NuGet/NuGet.Config"
+          "/Users/dylan.zan/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
