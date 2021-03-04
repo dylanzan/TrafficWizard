@@ -33,13 +33,13 @@ namespace TrafficWizard.controller
             try
             {
                         
-               var t1=this.doReadToQueue();
+              this.doReadToQueue();
                
-               var t2=this.doContentToReport();
+              this.doContentToReport();
 
-               var t3= this.doReportToCSV();
+              this.doReportToCSV();
                 
-               Task.WaitAny(new Task[]{t1,t2,t3});
+               //Task.WaitAll(new Task[]{t1,t2,t3});
             }
             catch
             {
@@ -47,31 +47,25 @@ namespace TrafficWizard.controller
             }
            
         }
-
-        private async Task doReadToQueue()
+        void doReadToQueue()
         {
             if (this.config == null)
             {
                 return;
             }
 
-            await Task.Run(() =>
-            {
-                rSFU.ReadSrcFile();
-            });
-            
-                
+            rSFU.ReadSrcFile();
+  
         }
 
-        private async Task doContentToReport()
+        private void doContentToReport()
         {
             if (this.config == null)
             {
                 return;
             }
 
-            await Task.Run(() =>
-            {
+           
                 bool loop = true;
 
                 while (true)
@@ -81,26 +75,22 @@ namespace TrafficWizard.controller
                         loop = false;
                         rSFU.logLineHandler(config.token);
                     }
-                    else if (srcFileContentQ.Count == 0 && !loop)
-                    {
-                        break;
-                    }
+                else if (srcFileContentQ.Count == 0 && !loop)
+                {
+                    break;
                 }
-            });
-           
+             }
+
         }
 
-        private async Task doReportToCSV()
+        private void doReportToCSV()
         {
             if (this.config == null)
             {
-                return;
+                return ;
             }
 
-            await Task.Run(() =>
-            {
-                rSFU.reportToCSV();
-            });
+            rSFU.reportToCSV();
             
         }
 
